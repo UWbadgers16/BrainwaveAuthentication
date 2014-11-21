@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">BrainwaveAuthentication</string>
+    <string name="action_settings">Settings</string>
+    <string name="channel_one">Channel 1:</string>
+    <string name="channel_two">Channel 2:</string>
+    <string name="channel_three">Channel 3:</string>
+    <string name="channel_four">Channel 4:</string>
+    <string name="channel_five">Channel 5:</string>
+    <string name="channel_six">Channel 6:</string>
+    <string name="channel_seven">Channel 7:</string>
+    <string name="channel_eight">Channel 8:</string>
+    <string name="channel_nine">Channel 9:</string>
+    <string name="channel_ten">Channel 10:</string>
+    <string name="channel_eleven">Channel 11:</string>
+    <string name="channel_twelve">Channel 12:</string>
+    <string name="channel_thirteen">Channel 13:</string>
+    <string name="channel_fourteen">Channel 14:</string>
+    <string name="button_sample">Sample</string>
+    <string name="empty">Empty</string>
+
+</resources>
