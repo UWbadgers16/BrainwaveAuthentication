@@ -1,5 +1,8 @@
 package com.example.brainwaveauthentication;
 
+import java.util.HashMap;
+import java.util.Iterator;
+
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -18,10 +21,12 @@ import android.widget.Toast;
 public class MainActivity extends ActionBarActivity {
 
 	private UsbDevice device;
+	private UsbManager usbManager;
 	private static final String ACTION_USB_PERMISSION = "com.android.example.USB_PERMISSION";
 	private final BroadcastReceiver mUsbReceiver = new BroadcastReceiver() {
 
 	    public void onReceive(Context context, Intent intent) {
+	    	Toast.makeText(getApplicationContext(), "WE'RE DOING THIS STUFF NOW", Toast.LENGTH_SHORT).show();
 	        String action = intent.getAction();
 	        if (ACTION_USB_PERMISSION.equals(action)) {
 	            synchronized (this) {
@@ -48,15 +53,7 @@ public class MainActivity extends ActionBarActivity {
         Intent intent = getIntent();
         device = (UsbDevice) intent.getParcelableExtra(UsbManager.EXTRA_DEVICE);
         if(device != null)
-        	Toast.makeText(getApplicationContext(), "Emotiv device connected", Toast.LENGTH_SHORT).show();
-        else {
-        	UsbManager mUsbManager = (UsbManager) getSystemService(Context.USB_SERVICE);
-        	PendingIntent mPermissionIntent = PendingIntent.getBroadcast(this, 0, new Intent(ACTION_USB_PERMISSION), 0);
-        	IntentFilter filter = new IntentFilter(ACTION_USB_PERMISSION);
-        	registerReceiver(mUsbReceiver, filter);
-        	UsbDevice temp = null;
-        	mUsbManager.requestPermission(temp, mPermissionIntent);
-        }
+        	Toast.makeText(getApplicationContext(), "Emotiv device detected", Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -81,6 +78,30 @@ public class MainActivity extends ActionBarActivity {
     
     /* Called when the user clicks the Sample button */
     public void sample(View view) {
-    	
+    	if(device == null) {
+    		usbManager = (UsbManager) getSystemService(Context.USB_SERVICE);
+        	getDevice();
+        	if(device != null) {
+            	PendingIntent mPermissionIntent = PendingIntent.getBroadcast(this, 0, new Intent(ACTION_USB_PERMISSION), 0);
+            	IntentFilter filter = new IntentFilter(ACTION_USB_PERMISSION);
+            	registerReceiver(mUsbReceiver, filter);
+            	usbManager.requestPermission(device, mPermissionIntent);
+    	    	Toast.makeText(getApplicationContext(), "Permission requested", Toast.LENGTH_SHORT).show();
+        	}
+    	}
+    }
+    
+    /* Gets the USB device handle */
+    private void getDevice() {
+    	HashMap<String, UsbDevice> deviceList = usbManager.getDeviceList();
+    	Iterator<UsbDevice> deviceIterator = deviceList.values().iterator();
+    	boolean found = false;
+    	while(deviceIterator.hasNext() && !found){
+    	    device = deviceIterator.next();
+    	    if(device.getProductId() == 60674) {
+    	    	found = true;
+    	    	Toast.makeText(getApplicationContext(), "Emotiv device detected", Toast.LENGTH_SHORT).show();
+    	    }
+    	}
     }
 }
