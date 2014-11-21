@@ -127,18 +127,15 @@ public class MainActivity extends ActionBarActivity {
     
     /* Perform a read from USB device */
     private byte[] read() {
-//    	Thread thread = new Thread(new Runnable() {
-//    		@Override
-//    		public void run() {
-//    	    	Toast.makeText(getApplicationContext(), "Starting read", Toast.LENGTH_SHORT).show();
-//    	    	usbConnection.bulkTransfer(usbEndpoint, data, data.length, 0);
-//    		}
-//    	});
-//    	
-//    	thread.start();
+    	Thread thread = new Thread(new Runnable() {
+    		@Override
+    		public void run() {
+    	    	Toast.makeText(getApplicationContext(), "Starting read", Toast.LENGTH_SHORT).show();
+    	    	usbConnection.bulkTransfer(usbEndpoint, data, data.length, 0);
+    		}
+    	});
     	
-
-    	usbConnection.bulkTransfer(usbEndpoint, data, 1, 0);
+    	thread.start();
     	return data;
     }
 }
