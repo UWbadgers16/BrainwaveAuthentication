@@ -1,5 +1,6 @@
 package com.example.brainwaveauthentication;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 
@@ -28,6 +29,7 @@ public class MainActivity extends ActionBarActivity {
 	private UsbInterface usbInterface;
 	private UsbEndpoint usbEndpoint;
 	private UsbDeviceConnection usbConnection;
+	private byte[] data = new byte[32];
 	private static final String ACTION_USB_PERMISSION = "com.android.example.USB_PERMISSION";
 	private final BroadcastReceiver usbReceiver = new BroadcastReceiver() {
 
@@ -92,7 +94,12 @@ public class MainActivity extends ActionBarActivity {
             	IntentFilter filter = new IntentFilter(ACTION_USB_PERMISSION);
             	registerReceiver(usbReceiver, filter);
             	usbManager.requestPermission(usbDevice, mPermissionIntent);
+    	    	Toast.makeText(getApplicationContext(), Arrays.toString(read()), Toast.LENGTH_SHORT).show();
         	}
+    	}
+    	else {
+    		read();
+    		Toast.makeText(getApplicationContext(), Arrays.toString(read()), Toast.LENGTH_SHORT).show();
     	}
     }
     
@@ -116,6 +123,22 @@ public class MainActivity extends ActionBarActivity {
     	usbEndpoint = usbInterface.getEndpoint(0);
     	usbConnection = usbManager.openDevice(usbDevice);
     	usbConnection.claimInterface(usbInterface, true);
-    	Toast.makeText(getApplicationContext(), "USB connection set up", Toast.LENGTH_SHORT).show();
+    }
+    
+    /* Perform a read from USB device */
+    private byte[] read() {
+//    	Thread thread = new Thread(new Runnable() {
+//    		@Override
+//    		public void run() {
+//    	    	Toast.makeText(getApplicationContext(), "Starting read", Toast.LENGTH_SHORT).show();
+//    	    	usbConnection.bulkTransfer(usbEndpoint, data, data.length, 0);
+//    		}
+//    	});
+//    	
+//    	thread.start();
+    	
+
+    	usbConnection.bulkTransfer(usbEndpoint, data, 1, 0);
+    	return data;
     }
 }
