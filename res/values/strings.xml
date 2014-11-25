@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">BrainwaveAuthentication</string>
+    <string name="app_name">Brainwave Authentication</string>
     <string name="action_settings">Settings</string>
     <string name="channel_one">Channel 1:</string>
     <string name="channel_two">Channel 2:</string>
