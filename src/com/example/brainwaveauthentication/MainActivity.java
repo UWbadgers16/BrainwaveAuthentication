@@ -37,7 +37,7 @@ public class MainActivity extends ActionBarActivity {
 	/* Used for PermissionIntent */
 	private static final String ACTION_USB_PERMISSION = "com.android.example.USB_PERMISSION";
 	
-	/* BroadcastReceiver for USB device persmission */
+	/* BroadcastReceiver for USB device permission */
 	private final BroadcastReceiver usbReceiver = new BroadcastReceiver() {
 
 		//when intent is received
@@ -47,7 +47,7 @@ public class MainActivity extends ActionBarActivity {
 	            synchronized (this) {
 	                usbDevice = (UsbDevice)intent.getParcelableExtra(UsbManager.EXTRA_DEVICE);				//get the UsbDevice
 	                
-	                //if the permmission was granted
+	                //if the permission was granted
 	                if (intent.getBooleanExtra(UsbManager.EXTRA_PERMISSION_GRANTED, false)) {
 	                	//if actual USB device
 	                    if(usbDevice != null){
