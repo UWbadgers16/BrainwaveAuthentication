@@ -2,7 +2,6 @@ package com.example.brainwaveauthentication;
 
 import java.util.HashMap;
 import java.util.Iterator;
-
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -36,6 +35,11 @@ public class MainActivity extends ActionBarActivity {
 	
 	/* Used for PermissionIntent */
 	private static final String ACTION_USB_PERMISSION = "com.android.example.USB_PERMISSION";
+	
+	/* Loading the decyprtion library */
+	static {
+		System.loadLibrary("libdecryptor");
+	}
 	
 	/* BroadcastReceiver for USB device permission */
 	private final BroadcastReceiver usbReceiver = new BroadcastReceiver() {
