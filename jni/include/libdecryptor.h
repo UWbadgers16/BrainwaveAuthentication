@@ -1,8 +1,13 @@
 #ifndef LIBDECRYPTOR_H
 #define LIBDECRYPTOR_H
 
-#include "Rijndael.h"
+/*
+#ifdef __cplusplus
+extern "C" {
+#endif
+*/
 
+#include "Rijndael.h"
 
 class LibDecryptor {
 public:
@@ -16,7 +21,13 @@ private:
     long UID;
     long lastactive;
     long mcrv(long in);
-    CRijndael::CRijndael* oRijndael;
+    CRijndael* oRijndael;
 };
 
 #endif // LIBDECRYPTOR_H
+
+/*
+#ifdef __cplusplus
+}
+#endif
+*/

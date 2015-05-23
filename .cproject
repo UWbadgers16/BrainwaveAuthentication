@@ -20,7 +20,7 @@
 					<folderInfo id="com.android.toolchain.gcc.1588605431.955025035" name="/" resourcePath="">
 						<toolChain id="com.android.toolchain.gcc.376911427" name="com.android.toolchain.gcc" superClass="com.android.toolchain.gcc">
 							<targetPlatform binaryParser="org.eclipse.cdt.core.ELF" id="com.android.targetPlatform.1889377255" isAbstract="false" superClass="com.android.targetPlatform"/>
-							<builder id="com.android.builder.1113394646" keepEnvironmentInBuildfile="false" managedBuildOn="false" name="Android Builder" superClass="com.android.builder">
+							<builder arguments="NDK_HOST_32BIT=1 V=1" command="ndk-build" id="com.android.builder.1113394646" keepEnvironmentInBuildfile="false" managedBuildOn="false" name="Android Builder" superClass="com.android.builder">
 								<outputEntries>
 									<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="outputPath" name="obj"/>
 									<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="outputPath" name="libs"/>
@@ -28,7 +28,6 @@
 							</builder>
 							<tool id="com.android.gcc.compiler.641086157" name="Android GCC Compiler" superClass="com.android.gcc.compiler">
 								<option id="com.android.gcc.option.includePath.247626989" superClass="com.android.gcc.option.includePath" valueType="includePath">
-									<listOptionValue builtIn="false" value="&quot;C:\Users\John\Development\adt-bundle-windows-x86_64-20140702\ndk\sources\cxx-stl\gnu-libstdc++\4.9\include&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;C:\Users\John\Development\adt-bundle-windows-x86_64-20140702\ndk\toolchains\aarch64-linux-android-4.9\prebuilt\windows-x86_64\lib\gcc\aarch64-linux-android\4.9\include&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;C:\Users\John\Development\adt-bundle-windows-x86_64-20140702\ndk\platforms\android-21\arch-arm\usr\include&quot;"/>
 								</option>
@@ -37,7 +36,7 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
-						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="jni"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>
@@ -53,8 +52,10 @@
 			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="com.android.AndroidPerProjectProfile"/>
 		</scannerConfigBuildInfo>
 	</storageModule>
-	<storageModule moduleId="refreshScope" versionNumber="1">
-		<resource resourceType="PROJECT" workspacePath="/BrainwaveAuthentication"/>
+	<storageModule moduleId="refreshScope" versionNumber="2">
+		<configuration configurationName="Default">
+			<resource resourceType="PROJECT" workspacePath="/BrainwaveAuthentication"/>
+		</configuration>
 	</storageModule>
 	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
 	<storageModule moduleId="org.eclipse.cdt.core.language.mapping">
@@ -63,4 +64,5 @@
 			<content-type-mapping configuration="" content-type="org.eclipse.cdt.core.cxxSource" language="org.eclipse.cdt.core.g++"/>
 		</project-mappings>
 	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
 </cproject>

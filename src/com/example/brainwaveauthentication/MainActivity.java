@@ -36,11 +36,6 @@ public class MainActivity extends ActionBarActivity {
 	/* Used for PermissionIntent */
 	private static final String ACTION_USB_PERMISSION = "com.android.example.USB_PERMISSION";
 	
-	/* Loading the decyprtion library */
-	static {
-		System.loadLibrary("libdecryptor");
-	}
-	
 	/* BroadcastReceiver for USB device permission */
 	private final BroadcastReceiver usbReceiver = new BroadcastReceiver() {
 
@@ -108,6 +103,13 @@ public class MainActivity extends ActionBarActivity {
     
     /* Called when the user clicks the Sample button */
     public void sample(View view) {
+
+    	DecryptorLibrary decryptor = new DecryptorLibrary();
+    	Toast.makeText(getApplicationContext(), decryptor.jniActivate(), Toast.LENGTH_SHORT).show(); //display that Emotiv is connected
+    	
+    	
+    	/*   	TextView textView = (TextView) findViewById(R.id.channel_one);										//finds the specific Text View
+    	textView.setText(decryptor.Activate());																//displays concatenated 2-byte data
     	//if the USB device hasn't yet been setup
     	if(usbDevice == null) {
         	getDevice();																					//get the UsbDevice
@@ -125,7 +127,7 @@ public class MainActivity extends ActionBarActivity {
     	else {
     		read();																							//perform read
     		populateData();																					//populate the Text Views
-    	}
+    	}*/
     }
     
     /* Gets the USB device handle */

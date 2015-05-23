@@ -7,8 +7,6 @@
 
 #include <exception>
 #include <cstring>
-#include <stddef.h>
-#include <stdio.h>
 
 using namespace std;
 
